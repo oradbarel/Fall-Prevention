@@ -6,3 +6,6 @@
 #### Using Machine Learning, we aim to predict whether a patient is about to fall from his bed and give an appropriate warning to the medical staff.
 #### A simple and smart UI will also be added to the system.
 #### We use weight and pressure sensors to build our dataset and to collect data in real time.
+
+### Software Architecture:
+![alt text](https://github.com/Almogbs/Fall-Prevention/blob/main/other/sw_arch.drawio.png)
