@@ -59,13 +59,13 @@ static const int sensor_gpio_map[] {
 
 /* Globals */
 WiFiClient client;
-IPAddress server(192, 168, 38, 232);
+IPAddress server(192, 168, 6, 232);
 const int port = SERVER_PORT;
 char main_buffer[MSG_BUFFER];
 
 Adafruit_ADS1015 ads;
 
-HX711_ADC LoadCell(WEIGHT_SDA, WEIGHT_SCL);
+HX711_ADC weight_sensor(WEIGHT_SDA, WEIGHT_SCL);
 
 
 void setup()
@@ -112,8 +112,8 @@ void loop()
     }
 
     /* Get Weight data */
-    while (LoadCell.update()) {}
-    sensor_data = LoadCell.getData();
+    while (weight_sensor.update()) {}
+    sensor_data = weight_sensor.getData();
     idx += sprintf(main_buffer + idx, "%.3f ", sensor_data);
 
     Serial.println(main_buffer); 
