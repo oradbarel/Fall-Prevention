@@ -10,7 +10,7 @@
 #define WEIGHT_SCL      5
 #define FSR_CAL_FACTOR  19.5
 #define WCAL_FACTOR     1
-#define TX_RATE         115200
+#define TX_RATE         9600
 #define SAMPLE_DELAY    200
 #define FS_RES          5.0
 #define FS_DIV          1023.0
@@ -77,9 +77,9 @@ void setup()
         pinMode(sensor_gpio_map[sensor], INPUT);
 
     /* Init Weight sensor */
-    weight_sensor.begin();
-    weight_sensor.start(2000, false);
-    weight_sensor.setCalFactor(WCAL_FACTOR);
+    //weight_sensor.begin();
+    //weight_sensor.start(2000, false);
+    //weight_sensor.setCalFactor(WCAL_FACTOR);
 
     /* Init I2C ADS */
     ads.begin(ADS_ADDR);
@@ -101,20 +101,20 @@ void loop()
     /* Get FFSR data */
     for (int sensor = 0; sensor < NUM_FFSR; sensor++) {
         sensor_data = analogRead(sensor_gpio_map[sensor]);
-        // vout = NORM_FS(sensor_data) * FSR_CAL_FACTOR;
-        idx += sprintf(main_buffer + idx, "%.3f ", sensor_data);
+        idx += sprintf(main_buffer + idx, "%d ", sensor_data);
     }
 
     /* Get RFSR data */
     for (int sensor = NUM_FFSR; sensor < NUM_SENSORS - 1; sensor++) {
         sensor_data = ads.readADC_SingleEnded(sensor_gpio_map[sensor]);
-        idx += sprintf(main_buffer + idx, "%.3f ", sensor_data);
+        idx += sprintf(main_buffer + idx, "%d ", sensor_data);
     }
 
     /* Get Weight data */
-    while (weight_sensor.update()) {}
-    sensor_data = weight_sensor.getData();
-    idx += sprintf(main_buffer + idx, "%.3f ", sensor_data);
+    //while (weight_sensor.update()) {}
+    //sensor_data = weight_sensor.getData();
+    //idx += sprintf(main_buffer + idx, "%d ", sensor_data);
+    idx += sprintf(main_buffer + idx, "%d ", 31415926);
 
     Serial.println(main_buffer); 
     client.println(main_buffer); 
