@@ -10,7 +10,7 @@
 #define WEIGHT_SCL      5
 #define FSR_CAL_FACTOR  19.5
 #define WCAL_FACTOR     1
-#define TX_RATE         115200
+#define TX_RATE         9600
 #define SAMPLE_DELAY    200
 #define FS_RES          5.0
 #define FS_DIV          1023.0
