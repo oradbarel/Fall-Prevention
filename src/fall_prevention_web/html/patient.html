@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/jpg" href="fall_prevention_web/assets/img/icon.png">
+    <title>Fall Prevention System</title>
+    <link href="fall_prevention_web/assets/css/black-dashboard.min.css" rel="stylesheet">
+    {{ turbo() }}                    
+</head>
+<body class>
+    <div class="wrapper">
+        <div class="sidebar">
+            <div class="sidebar-wrapper">
+                <div class="logo">
+                    <a href="javascript:void(0)" class="simple-text logo-normal"> Dashboards </a>
+                </div>
+                <ul class="nav">
+                    <li class="">
+                        <a href="{{ url_for('home') }}">
+                            <p>All Patients</p>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="{{ url_for('patient') }}">
+                            <p>{{ patient.name }}</p>
+                        </a>
+                    </li>               
+                    <li class="">
+                        <a href="/">
+                            <p>Add New Patient</p>
+                        </a>
+                    </li>                
+                </ul>
+            </div>
+        </div>
+        <div class="main-panel">
+            <nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent">
+                <div class="container-fluid">
+                    <div class="navbar-wrapper">
+                        <div class="navbar-toggle d-inline">
+                            <button type="button" class="navbar-toggler">
+                                <span class="navbar-toggler-bar bar1"></span>
+                                <span class="navbar-toggler-bar bar2"></span>
+                                <span class="navbar-toggler-bar bar3"></span>
+                            </button>
+                        </div>
+                        <a class="navbar-brand" href="javascript:void(0)"> <img src="fall_prevention_web/assets/img/icon.png"  class="image" width="50" height="50"> FP</a>
+                    </div>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-bar navbar-kebab"></span>
+                        <span class="navbar-toggler-bar navbar-kebab"></span>
+                        <span class="navbar-toggler-bar navbar-kebab"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navigation">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="input-group d-flex align-items-center mb-0">
+                                <label class="switch theme-switch">
+                                    <p style="color:#1EDDFF;"> Night Mode</p>
+                                    <input type="checkbox" class="bsc" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </li>
+                            <li class="separator d-lg-none"></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div class="modal modal-search fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModal" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="SEARCH">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="card card-chart">
+                            <div class="card-header ">
+                                {% include "position.html" %}
+                                {% block content1 %}{% endblock %}        
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        {% include "datetime.html" %}
+                        {% block content2 %}{% endblock %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="card card-chart">
+                            <div class="card-header">
+                                <h5 class="card-category">Name</h5>
+                                <h3 class="card-title">
+                                    {{ patient.name }}
+                                </h3>
+                                <h5 class="card-category">ID</h5>
+                                <h3 class="card-title">
+                                    {{ patient.id }}
+                                </h3>
+                                <h5 class="card-category">Age</h5>
+                                <h3 class="card-title">
+                                    {{ patient.age }}
+                                </h3>
+                                <h5 class="card-category">Weight</h5>
+                                <h3 class="card-title">
+                                    {{ patient.weight }}kg
+                                </h3>
+                                <h5 class="card-category">Height</h5>
+                                <h3 class="card-title">
+                                     {{ patient.height }}cm
+                                </h3>
+                                <h5 class="card-category">Sex</h5>
+                                <h3 class="card-title">
+                                    {{ patient.sex_dict["name"] }}
+                                     <img src="fall_prevention_web/assets/img/patients/{{ patient.sex_dict['file'] }}.png" class="image">
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card card-chart">
+                            <div class="card-header">
+                                <h5 class="card-category">Floor</h5>
+                                <h3 class="card-title">
+                                    {{ patient.floor }}
+                                </h3>
+                                <h5 class="card-category">Room</h5>
+                                <h3 class="card-title">
+                                    {{ patient.room }}
+                                </h3>
+                                <h5 class="card-category">Bed</h5>
+                                <h3 class="card-title">
+                                    {{ patient.bed }}
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card card-chart">
+                            <div class="card-header">
+                                <h5 class="card-category">Doctor</h5>
+                                <h3 class="card-title">
+                                    {{ patient.doctor_dict['name'] }}
+                                     <img src="fall_prevention_web/assets/img/doctors/{{ patient.doctor_dict['file'] }}.png" class="image">
+                                </h3>
+                                <h5 class="card-category">Nurse</h5>
+                                <h3 class="card-title">
+                                    {{ patient.nurse_dict['name'] }}
+                                     <img src="fall_prevention_web/assets/img/nurses/{{ patient.nurse_dict['file'] }}.png" class="image">
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sticky-slider">
+            <a href="{{ url_for('edit_patient') }}"> Edit Patient </a>
+        </div>
+    </div>
+    <script type=text/javascript src="fall_prevention_web/assets/js/core/jquery.min.js"></script>
+    <script type=text/javascript src="fall_prevention_web/assets/js/core/popper.min.js"></script>
+    <script type=text/javascript src="fall_prevention_web/assets/js/core/bootstrap.min.js"></script>
+    <script type=text/javascript src="fall_prevention_web/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+    <script type=text/javascript src="fall_prevention_web/assets/js/plugins/chartjs.min.js"></script>
+    <script type=text/javascript src="fall_prevention_web/assets/js/plugins/bootstrap-notify.js"></script>
+    <script type=text/javascript src="fall_prevention_web/assets/js/black-dashboard.min.js"></script>
+    <script type=text/javascript src="fall_prevention_web/assets/js/themeSettings.js"></script>    
+</body>
+</html>

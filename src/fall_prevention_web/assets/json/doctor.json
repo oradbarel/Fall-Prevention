@@ -1,0 +1,5 @@
+{
+    "ArtVandelay": {"name": "Dr. Art Vandelay", "file": "art_vandelay"},
+    "DavidFischer": {"name": "Dr. David Fischer", "file": "david_fischer"},
+    "Other": {"name": "Dr. Un-named", "file": "unknown"}
+}

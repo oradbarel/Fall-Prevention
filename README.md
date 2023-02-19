@@ -1,16 +1,24 @@
 <h1 align="center">Fall Prevention</h1>
-<h3 align="center">IoT Course</h3>
 
 ## Description
-An IOT project to prevent patients (with temporary neurological disability) from falling out of bed in hospitals.
-Using Machine Learning, we aim to predict whenever a patient is about to fall from his bed and give an appropriate warning to the medical staff.
-A simple and smart UI will also be added to the system.
-We use weight and pressure sensors to build our dataset and to collect data in real time.
+- A Project with Rambam Health Care Campus, that aim to prevent patients (with temporary neurological disability) from falling out of bed in hospitals.
+- Out data is collected by a device we created with ESP32 micro-controller, using Force-sensors and wieght sensors.
+- ESP32 communications (server-client) and data collection written in C/C++.
+- Machine Learning, Deep Learning predictions implemented with Python (Jupyter Notebook) using SKLearn, Keras (Tensorflow) and more.
+- Models: Recurrent Neural Network (RNN), Convolutional Neural Network (CNN), Random Forest
 
+Hardware Design           |  System Design 
+:-------------------------:|:-------------------------:
+![alt text](others/Arch/SensorsDiagram.jpeg)  |  ![alt text](others/Arch/System_Diagram.drawio.png)
 
-### Hardware Design:
-![alt text](https://github.com/Almogbs/Fall-Prevention/blob/main/other/HW_design.png)
+Sensors Layout          |  Collecting the Data
+:-------------------------:|:-------------------------:
+![alt text](others/HW/pic2.jpg)  |  ![alt text](others/HW/pic1.jpg)
 
+Software Design      |  Nurses Station Website
+:-------------------------:|:-------------------------:
+![alt text](others/Arch/SoftwareDiagram.png) |  ![alt text](others/web/web.png)
 
-### High Level Software Architecture:
-![alt text](https://github.com/Almogbs/Fall-Prevention/blob/main/other/sw_arch.drawio.png)
+Convolutional Neural Network    | Recurrent Neural Network
+:-------------------------:|:-------------------------:
+![alt text](others/ML/cnn.png) |  ![alt text](others/ML/rnn.png)

@@ -1,0 +1,16 @@
+<div id="load_datetime" class="card card-chart">
+    <div class="card-header">
+        {% if live %}
+        <h5 style="color:#ff1e1e;" class="card-category">Live</h5>
+        {% endif %}
+
+        <h5 class="card-category">Date</h5>
+        <h3 class="card-title">
+            {{curr_date}}
+        </h3>  
+        <h5 class="card-category">Time</h5>
+        <h3 class="card-title">
+            {{curr_time}}
+        </h3>
+    </div>
+</div>

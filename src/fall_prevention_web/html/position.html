@@ -1,0 +1,15 @@
+<div id="load_position"" class=" row">
+    <div class="col-sm-6 text-left">
+        
+        <h5 class="card-category">Patient name</h5>
+        <h2 class="card-title">
+            {{ patient.name }}
+        </h2>
+        <h5 class="card-category">Position</h5>
+        <h2 class="card-title">{{position}}</h2>
+    </div>
+    <img src="fall_prevention_web/assets/img/positions/{{position_image}}.png" class="center">
+    <audio autoplay>
+        <source src="fall_prevention_web/assets/sound/{{alarm}}.wav" type="audio/wav">
+    </audio>
+</div>
