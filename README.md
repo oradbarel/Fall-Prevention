@@ -1,4 +1,9 @@
+<p align="center">
+  <img src="others/Logo.png" width="150" title="Logo">
+</p>
+
 <h1 align="center">Fall Prevention</h1>
+
 
 ## Description
 - A Project with Rambam Health Care Campus, that aim to prevent patients (with temporary neurological disability) from falling out of bed in hospitals.
